@@ -7,6 +7,7 @@ var animals = [
 ];
 
 
+
 function createButtons(arrayToUse, classToAdd, areaToAddTo) {
     $(areaToAddTo).empty();
     
@@ -36,7 +37,7 @@ function createButtons(arrayToUse, classToAdd, areaToAddTo) {
 $(document).ready(function onReady() {
 
     $("#animal-buttons").on("click", ".animal-buttons", function handleAnimalsBtnClick() {
-        var $animalsElem = $("<animals>");
+        var $animalsElem = $("#animal-items");
         $animalsElem.empty();
         $(".animal-buttons").removeClass("active");
         $(this).addClass("active");
@@ -50,11 +51,11 @@ $(document).ready(function onReady() {
             method: "GET"
         }).then(function(response) {
             var results = response.data;
-
+           
             
             for (var i = 0; i < results.length; i++) { 
-                
-                var animalDiv = $("<div class =\"animal-item\">");
+                var animalDiv = $("<div class =\"animal-pictures\">");
+                // var animalDiv = $("<div>", {class: "animal-pictures"});
                 //var animalDiv = 'amuchlongername';
                 //$('#animals').append('<div class= animal[' + i + ']'>animalDiv +'</div>');
 
@@ -77,7 +78,7 @@ $(document).ready(function onReady() {
                 animalDiv.append(animalImage);
                 
                 $animalsElem.append(animalDiv);
-                $(".animalDiv").append($("#animal-item"));
+                // $(".animal-pictures").append($("#animal-items"));
                 console.log("div entry happens")
             }
         });
